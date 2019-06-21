@@ -1,0 +1,42 @@
+{
+   "_comment":"Configuration File for Network Capture to Cloud",
+   "mqtt": 
+    {
+        "enabled" : 0,
+        "broker_url" : "abc.com",
+        "broker_port": 8883,
+        "topic":"/demosfp/test/device",
+        "username":"abcd",
+        "password":"abcd",
+        "qos": 1
+    },
+   "aws_s3":
+   {
+        "enabled": 1,
+	    "s3_url":"abc.com",
+	    "bucket_name": "vne-bharti-demo-packet-bucket",
+	    "access_key_id": "AKIA3ECFSMLF7KDMYWXZ",
+	    "secret_access_key": "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"
+   		
+   },
+   "wifi":
+   {
+        "enabled" : 1,
+	    "access_point": "SSID_1234",
+	    "password" : "abcd"
+   },
+   "network_capture":
+   {
+	 "enabled": 1,
+	 "interface":"ens5",
+	 "path" : "pcaps",
+	 "pcap_file": "abc.pcap"
+   },
+   "logging":
+   {
+	  "enabled" : 1,
+	  "path" : "logs",
+	  "file" : "network_capture_cloud.log",
+	  "level": "DEBUG"
+   }
+}
