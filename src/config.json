@@ -12,23 +12,23 @@
     },
    "aws_s3":
    {
-        "enabled": 1,
+        "enabled": 0,
 	    "s3_url":"abc.com",
 	    "bucket_name": "vne-bharti-demo-packet-bucket",
-	    "access_key_id": "AKIA3ECFSMLF7KDMYWXZ",
-	    "secret_access_key": "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"
+	    "access_key_id": "AKIA3ECFSMLFDMY",
+	    "secret_access_key": "en5HE7Oo082+YjigB2P6U4tJA2jPSRyVk"
    		
    },
    "wifi":
    {
-        "enabled" : 1,
+        "enabled" : 0,
 	    "access_point": "SSID_1234",
 	    "password" : "abcd"
    },
    "network_capture":
    {
 	 "enabled": 1,
-	 "interface":"ens5",
+	 "interface":"wlan0",
 	 "path" : "pcaps",
 	 "pcap_file": "abc.pcap"
    },

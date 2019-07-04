@@ -129,6 +129,7 @@ def load_config(config_file):
     global g_config
     g_config = get_json_config(config_file)
 
+
 def init_log():
     global g_config
     
@@ -139,7 +140,8 @@ def init_log():
     #vne::tbd:: get log level from config
     log_level = logging.DEBUG
     logging.basicConfig(filename = log_file, level=log_level, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
-    logging.info('Program Started')
+    logging.info('\tProgram Started')
+    logging.info('========================================')
     
 
 def get_file_list(dpath, file_type):
@@ -206,8 +208,15 @@ def capture_thread(count):
     
     global g_config 
     logging.info('starting capture thread %d', count)
+
+    if not os.path.exists(g_config['network_capture']['path']):
+        os.mkdir(g_config['network_capture']['path'])
+        logging.info('Directory created: %s',g_config['network_capture']['path'] )
+    else:
+        logging.info('Capture Directory exists: %s',g_config['network_capture']['path'] )
+
     itf = g_config['network_capture']['interface']
-    pcap_file = '/'.join(g_config['network_capture']['path'], g_config['network_capture']['pcap_file'])
+    pcap_file = '/'.join([g_config['network_capture']['path'], g_config['network_capture']['pcap_file']])
     
     #mqtt publish tcpdump commandline 
     
@@ -256,7 +265,7 @@ def upload_thread(count):
                 os.remove(fname, ofile)
                 logging.info('files removed %s %s', fname, ofile)
                 
-        time.sleep(5)
+        sleep(5)
     
 
 def start_modules():
@@ -273,7 +282,8 @@ def start_modules():
     start_upload_module()
 
 def main():    
-    print 'network capture to cloud program started...'
+    print 'network capture to cloud program started'
+    print '========================================'
     global g_config
     if len (sys.argv) != 1 :
         print "Usage: python main.py"
